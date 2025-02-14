@@ -1,0 +1,289 @@
+body{
+    background-color: #e8d4d4;
+    background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%23ef03b0' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /*background: linear-gradient(135deg, #edc1e5, #cba9ce);*/
+    font-family: 'Poppins', sans-serif; 
+    animation: gradientAnimation 220s ease infinite;
+    overflow: hidden;
+    min-height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.container{
+    background: rgba(227, 198, 226, 0.669);
+    padding: 3rem;
+    border-radius: 100px;
+    box-shadow: 0 10px 30px rgb(196, 79, 188);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    animation: scaleIn 0.5s ease-out;
+    position: relative;
+    margin: 1rem;
+    padding: clamp(1rem, 3vw, 3rem);
+}
+
+h1{
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+    color: #2d3436;
+    transition: color 0.3s ease;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease, bounce 2s ease infinite;
+    background: linear-gradient(45deg, #9508e6, #ec515e, #2d3436);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient 3s linear infinite;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.gif-container{
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    animation: floatAnimation 3s ease-in-out infinite;
+    position: relative;
+}
+
+.gif-container img {
+    width: min(100%, 400px);
+    height: auto;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gif-container::before {
+    content: '❤️';
+    position: absolute;
+    font-size: 2rem;
+    animation: float 2s ease infinite;
+    opacity: 0;
+}
+
+.gif-container::after {
+    content: '💖';
+    position: absolute;
+    font-size: 2rem;
+    animation: float 2s ease infinite 1.5s;
+    opacity: 0;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(random(100) + px, -100px);
+        opacity: 0;
+    }
+}
+
+.hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff4757;
+    transform: rotate(45deg);
+    animation: heartFall linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff4757;
+}
+
+.heart::before {
+    left: -10px;
+}
+
+.heart::after {
+    top: -10px;
+}
+
+@keyframes heartFall {
+    0% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* autoria */
+
+.autoria{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: clamp(0.7rem, 2vw, 0.8rem);
+    color: #666666a4;
+    background: rgba(255, 255, 255, 0.139);
+    padding: 5px 10px;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+/* Ajustes para los corazones en móvil */
+@media (max-width: 480px) {
+    .heart {
+        width: 15px;
+        height: 15px;
+    }
+
+    .heart::before,
+    .heart::after {
+        width: 15px;
+        height: 15px;
+    }
+
+    .heart::before {
+        left: -7.5px;
+    }
+
+    .heart::after {
+        top: -7.5px;
+    }
+
+    .container {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .gif-container::before,
+    .gif-container::after {
+        font-size: 1.5rem;
+    }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 85%;
+        padding: 2rem;
+    }
+}
+
+/* Ajustes para pantallas más grandes */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+/* Ajustes para orientación horizontal en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .gif-container {
+        max-width: 200px;
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+}
